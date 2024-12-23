@@ -9,29 +9,24 @@
     <title>StudyTimer</title>
 </head>
 <body class="m-0 p-0">
-    <img src="images/study_wallpaper.jpeg">
+    <img src="images/study_wallpaper.jpeg" class="wallpaper">
     <nav class="container-fluid d-flex flex-column  align-items-center justify-content-around">
         <!-- set which timer for : study/break -->
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-light p-3 active" id="study">
-                <input type="radio" onclick="chmod('study')" name="options" autocomplete="off" checked> Studying
-            </label>
-            <label class="btn btn-dark p-3 active" id="sbreak">
-                <input type="radio" onclick="chmod('sbreak')" name="options" autocomplete="off"> Short Break
-            </label>
-            <label class="btn btn-dark p-3 active" id="lbreak">
-                <input type="radio" onclick="chmod('lbreak')" name="options" autocomplete="off"> LongBreak
-            </label>
+            <label class="btn btn-outline-dark text-light p-3 active" id="study" onclick="chmod('study')">Studying</label>
+            <label class="btn btn-dark p-3 active" id="sbreak" onclick="chmod('sbreak')">Short Break</label>
+            <label class="btn btn-dark p-3 active" id="lbreak" onclick="chmod('lbreak')">LongBreak</label>
         </div>
         <!-- The timer -->
-        <h1 class="text-light font-weight-bold font-weight-italic">60:00</h1>
+        <div class="column text-center">
+            <h1 class="text-light font-weight-bold font-weight-italic" id="counter">60:00</h1>
+            <input type="range" name="counter_settings" min="3" max="300" id="counterRange">
+        </div>
         <div class="btn-goup btn-group-toggle">
-            <button class="btn btn-outline-light text-light">pause</button>
-            <button class="btn btn-outline-light text-light">reload</button>
+            <img class="btn grstg" id="ps" onclick="playStop()" src="images/play.png">
+            <img class="btn grstg" onclick="restart()" src="images/restart.png">
         </div>
     </nav>
-
-
     <!-- import js scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>
