@@ -1,6 +1,7 @@
 /* general */
 *{
     font-family: cursive;
+    transition: all 1s;
 }
 /* the body */
 .wallpaper{

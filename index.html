@@ -9,7 +9,7 @@
     <title>StudyTimer</title>
 </head>
 <body class="m-0 p-0">
-    <img src="images/study_wallpaper.jpeg" class="wallpaper">
+    <img src="images/study_wallpaper.jpeg" class="wallpaper" aria-disabled="true">
     <nav class="container-fluid d-flex flex-column  align-items-center justify-content-around">
         <!-- set which timer for : study/break -->
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -18,12 +18,12 @@
             <label class="btn btn-dark p-3 active" id="lbreak" onclick="chmod('lbreak')">LongBreak</label>
         </div>
         <!-- The timer -->
-        <div class="column text-center">
-            <h1 class="text-light font-weight-bold font-weight-italic" id="counter">60:00</h1>
+        <div class="column text-center absolute">
+            <h1 class="text-light font-weight-bold font-weight-italic" id="counter"></h1>
             <input type="range" name="counter_settings" min="3" max="300" id="counterRange">
         </div>
         <div class="btn-goup btn-group-toggle">
-            <img class="btn grstg" id="ps" onclick="playStop()" src="images/play.png">
+            <img class="btn grstg" id="ps" onclick="playStop()" src="images/stop.png">
             <img class="btn grstg" onclick="restart()" src="images/restart.png">
         </div>
     </nav>
