@@ -62,6 +62,7 @@ function playStop(){
 // restart
 function restart(){
     $("#counter").text(localStorage.getItem(mode))
+    playStop()
 }
 // settings (change the timer start)
 $(document).ready(
