@@ -1,8 +1,19 @@
+// function to avoid empty localStorage's problem
+let modeInitial = {study:"60:00",lbreak:"10:00",sbreak:"05:00"}
+function LSgetItem(id){
+    if(localStorage.getItem(id)==null){
+        $("#counter").text(modeInitial[id])
+        localStorage.setItem(id,modeInitial[id])
+    }
+    else{
+        $('#counter').text(localStorage.getItem(id));
+    }
+}
 // change timer mode
 let modesID = ['study','lbreak','sbreak']
 let mode = 'study'
 function chmod(id){
-    $('#counter').text(localStorage.getItem(id));
+    LSgetItem(id)
     mode = id
     play = 0
     playStop()
@@ -32,21 +43,17 @@ function playStop(){
     if(play==0){
         let minSec = $("#counter").text().split(":")
         let duration = Number(minSec[0])*60 + Number(minSec[1])
-        console.log(duration)
         counting = setInterval(() => {
             let minutes = Math.floor(duration/60)
             let seconds = duration%60
-
-           let formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            $('#counter').text(formattedTime);
-
+            $('#counter').text(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
             if(duration===0){
                 clearInterval(counting)
             }
             else{
                 duration--
             }
-        },100);
+        },1000);
     }
     else{
         clearInterval(counting)
@@ -61,7 +68,7 @@ function restart(){
 
 $(document).ready(
     function() {
-        $("#counter").text(localStorage.getItem('study'))
+        LSgetItem("study")
         $('#counterRange').on('input', function() {
             let counterVal = `${$(this).val()}:00`
             $('#counter').text(counterVal);
