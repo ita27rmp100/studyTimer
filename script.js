@@ -21,52 +21,35 @@ function chmod(id){
 // stop / play the counter
 let stopPlayArr = ['play','stop']
 let play = 1
-let secCount , minCount
+let stopSec = false ;
+let counting
 function playStop(){
+    // Play or Stop
     play = Math.abs(play-1);
     $("#ps").attr('src',`images/${stopPlayArr[play]}.png`)
     $("#counterRange").css("opacity",`${play}`)
     $("#counterRange").attr('disabled',!play)
     if(play==0){
-        let second =  $("#counter").text().slice($("#counter").text().indexOf(':')+1)
-        if(second == '00'){
-            $("#counter").text($("#counter").text().replace($("#counter").text().slice($("#counter").text().indexOf(':')+1),'59'))
-        }
-        secCount = setInterval(() => {
-            let sec = $("#counter").text().slice($("#counter").text().indexOf(':')+1)
-            $("#counter").text($("#counter").text().replace(
-                $("#counter").text().slice($("#counter").text().indexOf(':')+1),
-                sec-1+0*100
-            ))
-            sec--
-            if(sec==0){
-                if(minute==0){
-                    clearInterval(secCount)
-                }
-                else{
-                    second=59
-                    minute--
-                }
-            }
-        },1000);
-        // minute down-counter
-        let minute = $("#counter").text().slice(0,$("#counter").text().indexOf(':'))
-        if(minute>0 && second=="00"){
-            $("#counter").text($("#counter").text().replace(minute,minute-1))
-        }
-        minCount = setInterval(() => {
-            if(minute==0){
-                clearInterval(minCount)
+        let minSec = $("#counter").text().split(":")
+        let duration = Number(minSec[0])*60 + Number(minSec[1])
+        console.log(duration)
+        counting = setInterval(() => {
+            let minutes = Math.floor(duration/60)
+            let seconds = duration%60
+
+           let formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            $('#counter').text(formattedTime);
+
+            if(duration===0){
+                clearInterval(counting)
             }
             else{
-                $("#counter").text($("#counter").text().replace(minute,minute-1))
-                minute--
+                duration--
             }
-        },61000);
+        },100);
     }
     else{
-        clearInterval(secCount)
-        clearInterval(minCount)
+        clearInterval(counting)
     }
 }
 
