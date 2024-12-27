@@ -59,13 +59,11 @@ function playStop(){
         clearInterval(counting)
     }
 }
-
 // restart
 function restart(){
-    $("#counter").text("00:00")
+    $("#counter").text(localStorage.getItem(mode))
 }
 // settings (change the timer start)
-
 $(document).ready(
     function() {
         LSgetItem("study")
