@@ -10,33 +10,31 @@
 </head>
 <body class="m-0 p-0">
     <!-- alarm -->
-     <audio class="absolute" style="opacity: 0;" id="alarm" play>
-        <source src="alarm.wav">
-     </audio>
+    <audio style="opacity: 1;" id="alarm">
+        <source src="alarm.mp3">
+    </audio>
     <!-- background of wite -->
     <img src="images/study_wallpaper.jpeg" class="wallpaper" aria-disabled="true">
     <nav class="container-fluid d-flex flex-column  align-items-center justify-content-around">
+        <!-- CopyRight -->
+        <h5 class="absolute left text-light" style="top:20px;left:20px;">Made by <a href="http:///www.instagram.com/tayeb_abderahim27" target="_blank">Abderahim</a></h5>
         <!-- set which timer for : study/break -->
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-dark text-light p-3 active" id="study" onclick="chmod('study')">Studying</label>
-            <label class="btn btn-dark p-3 active" id="sbreak" onclick="chmod('sbreak')">Short Break</label>
-            <label class="btn btn-dark p-3 active" id="lbreak" onclick="chmod('lbreak')">LongBreak</label>
-        </div>
-        <!-- The timer -->
-        <div class="column text-center absolute">
-            <h1 class="text-light font-weight-bold font-weight-italic" id="counter"></h1>
+         <div class="column text-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn-outline-dark" id="study" onclick="chmod('study')">Studying</label>
+                <label class="btn-dark" id="sbreak" onclick="chmod('sbreak')">Short Break</label>
+                <label class="btn-dark" id="lbreak" onclick="chmod('lbreak')">LongBreak</label>
+            </div>
+            <h1 class="text-light font-weight-bold font-weight-italic pt-3" id="counter"></h1>
             <input type="range" name="counter_settings" min="3" max="300" id="counterRange">
-        </div>
-        <div class="btn-goup btn-group-toggle">
-            <img class="btn grstg" id="ps" onclick="playStop()" src="images/stop.png">
-            <img class="btn grstg" onclick="restart()" src="images/restart.png">
-        </div>
+            <div class="btn-goup btn-group-toggle">
+                <img class="btn grstg" id="ps" onclick="playStop()" src="images/stop.png">
+                <img class="btn grstg" onclick="restart()" src="images/restart.png">
+            </div>
+         </div>
     </nav>
     <!-- import js scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        
-    </script>
 </body>
 </html>

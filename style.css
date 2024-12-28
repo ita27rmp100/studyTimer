@@ -1,31 +1,20 @@
 /* general */
-*{
-    font-family: cursive;
-    transition: all 1s;
-}
+*{font-family: cursive;transition: all 1s}
 /* the body */
+    /* CopyRight */
+a:hover{text-decoration:none}
+    /* wallpaper */
 .wallpaper{
     width:100%;
     height:100vh;
     filter:brightness(0.4);
     position:absolute;
     z-index:0;
-}
-nav{
-    height:100vh;
-}
-nav *{
-    z-index:453;
-}
+    -webkit-user-drag: none}
+nav{height:100vh}
+nav *{z-index:453}
 /* counter */
-h1{
-    font-size:96px;
-}
-input:in-range{
-    width: 200px;
-}
+h1{font-size:96px}
+input:in-range{width:200px}
 /* grpup settings ( grstg ) : pause , play , settings */
-.grstg{
-    width:75px;
-    filter:invert(1)
-}
+.grstg{width:75px;filter:invert(1)}

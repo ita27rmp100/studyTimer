@@ -32,14 +32,16 @@ function chmod(id){
 // stop / play the counter
 let stopPlayArr = ['play','stop']
 let play = 1
-let stopSec = false ;
 let counting
 function playStop(){
+    // local function
+    let swap = () => {play = Math.abs(play-1);
+                        $("#ps").attr('src',`images/${stopPlayArr[play]}.png`)
+                        $("#counterRange").css("opacity",`${play}`)
+                        $("#counterRange").attr('disabled',!play)
+                    }
     // Play or Stop
-    play = Math.abs(play-1);
-    $("#ps").attr('src',`images/${stopPlayArr[play]}.png`)
-    $("#counterRange").css("opacity",`${play}`)
-    $("#counterRange").attr('disabled',!play)
+    swap()
     if(play==0){
         let minSec = $("#counter").text().split(":")
         let duration = Number(minSec[0])*60 + Number(minSec[1])
@@ -47,13 +49,13 @@ function playStop(){
             let minutes = Math.floor(duration/60)
             let seconds = duration%60
             $('#counter').text(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
-            if(duration===0){
-                clearInterval(counting)
-            }
-            else{
-                duration--
-            }
-        },1000);
+            duration--
+        },999);
+        setTimeout(() => {
+            clearInterval(counting)
+            swap()
+            document.getElementById("alarm").play()
+        },(duration+1)*999);
     }
     else{
         clearInterval(counting)
@@ -68,6 +70,7 @@ function restart(){
 $(document).ready(
     function() {
         LSgetItem("study")
+        $("label").addClass("btn p-3 active")
         $('#counterRange').on('input', function() {
             let counterVal = `${$(this).val()}:00`
             $('#counter').text(counterVal);
