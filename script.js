@@ -55,7 +55,7 @@ function playStop(){
             clearInterval(counting)
             swap()
             document.getElementById("alarm").play()
-        },(duration+1)*999);
+        },(duration+1)*999.999);
     }
     else{
         clearInterval(counting)

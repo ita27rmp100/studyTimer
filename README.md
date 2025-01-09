@@ -1,2 +1,2 @@
 # studyTimer
-basic counter to help students focus more and be carful with their time.
+basic tool to help students focus more and be carful with their time ...

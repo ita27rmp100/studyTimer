@@ -1,5 +1,8 @@
 /* general */
-*{font-family: cursive;transition: all 1s}
+*{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+*:not(#counter){
+    transition: all 1s;
+}
 /* the body */
     /* CopyRight */
 a:hover{text-decoration:none}
@@ -18,3 +21,12 @@ h1{font-size:96px}
 input:in-range{width:200px}
 /* grpup settings ( grstg ) : pause , play , settings */
 .grstg{width:75px;filter:invert(1)}
+/* Rotate 90deg when the screen is smaller (for phones and tablets .. etc) */
+@media screen and (max-width:450px) {
+    h1{
+        font-size:72px;;
+    }
+    nav{
+        height: 96vh;
+    }
+}
