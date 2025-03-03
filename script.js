@@ -63,18 +63,31 @@ function playStop(){
 }
 // restart
 function restart(){
+    play = 0
     $("#counter").text(localStorage.getItem(mode))
     playStop()
 }
 // settings (change the timer start)
+function checkWidth(){
+    if($(document).width()<=700){
+        $('.wallpaper').attr('src','images/estinWP.jpg')
+    }
+    else{
+        $('.wallpaper').attr('src','images/estinWP-large.jpg')
+    }
+}
 $(document).ready(
     function() {
         LSgetItem("study")
+        checkWidth()
         $("label").addClass("btn p-3 active")
         $('#counterRange').on('input', function() {
             let counterVal = `${$(this).val()}:00`
             $('#counter').text(counterVal);
             localStorage.setItem(mode,`${$(this).val()}:00`)
         });
+        $(window).resize(function(){
+            checkWidth()
+        })
     }
 )
